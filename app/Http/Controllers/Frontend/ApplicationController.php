@@ -9,10 +9,11 @@ class ApplicationController extends FrontendController
 {
 
     public function index(){
-         $this->data('a',4);
+         $this->data('title','Home');
         return view($this->pagePath.'home.home',$this->data);
     }
     public function contact(){
-        return view($this->pagePath.'contact.contact');
+        $this->data('title','Contact');
+        return view($this->pagePath.'contact.contact',$this->data);
     }
 }
