@@ -7,5 +7,10 @@ use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
-
+    public $frontendPath= 'frontend.';
+    public $pagePath=' ';
+    public function __construct()
+    {
+        $this->pagePath =$this->frontendPath.'pages.';
+    }
 }
