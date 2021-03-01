@@ -17,6 +17,6 @@ trait General
         if(!isset($frontpart)){
             $frontpart=ucfirst(Config::get('title.company_name'));
         }
-        return $frontpart.$seperator.$backpart;
+        return $frontpart.$seperator.ucfirst($backpart);
     }
 }
