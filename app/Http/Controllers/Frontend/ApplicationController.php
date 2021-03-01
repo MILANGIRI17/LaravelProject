@@ -13,7 +13,7 @@ class ApplicationController extends FrontendController
         return view($this->pagePath.'home.home',$this->data);
     }
     public function contact(){
-        $this->data('title','Contact');
+        $this->data('title',$this->makeTitle('contact'));
         return view($this->pagePath.'contact.contact',$this->data);
     }
 }
