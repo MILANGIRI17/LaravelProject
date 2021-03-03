@@ -13,10 +13,10 @@ trait General
         return $this->data[$key]=$value;
     }
 
-    public function makeTitle($backpart,$seperator=" : ",$frontpart=null){
+    public function makeTitle($backPart,$seperator = " : ",$frontPart=null){
         if(!isset($frontpart)){
-            $frontpart=ucfirst(Config::get('title.company_name'));
+            $frontPart=ucfirst(Config::get('title.company_name'));
         }
-        return $frontpart.$seperator.ucfirst($backpart);
+        return $frontPart.$seperator.ucfirst($backPart);
     }
 }

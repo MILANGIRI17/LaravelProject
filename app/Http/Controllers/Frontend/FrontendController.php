@@ -11,7 +11,7 @@ class FrontendController extends Controller
     public $pagePath=' ';
     public function __construct()
     {
-        $this->data('title','Welcome');
+        $this->data('title',$this->makeTitle('Welcome'));
         $this->pagePath =$this->frontendPath.'pages.';
     }
 }
