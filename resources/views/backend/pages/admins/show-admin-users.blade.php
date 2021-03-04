@@ -27,7 +27,39 @@
                         <div class="x_content">
                             <div class="col-md-12">
                                 @include('backend.layouts.message')
-                                @yield('')
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>S.N</th>
+                                        <th>Name</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>User Types</th>
+                                        <th>Status</th>
+                                        <th>Image</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($usersData as $key => $users)
+                                    <tr>
+                                        <td>{{++$key}}</td>
+                                        <td>{{$users->name}}</td>
+                                        <td>{{$users->username}}</td>
+                                        <td>{{$users->email}}</td>
+                                        <td>{{$users->admin_type}}</td>
+                                        <td>{{$users->status}}</td>
+                                        <td>
+                                            <img src="{{url('uploads/admins/'.$users->image)}}" width="30" alt="{{$users->name."'s Picture"}}">
+                                        </td>
+                                        <td>
+                                            <a href="">Edit</a>
+                                            <a href="">Delete</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
