@@ -8,7 +8,7 @@
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Show Users
+                            <h2><a href="{{route('admin-users')}}">Show Users</a>
                             <a href="{{route('add-admin-user')}}" class="btn-sm btn-success"><i class="fa fa-plus"></i></a>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
@@ -27,6 +27,20 @@
                             <div class="clearfix"></div>
                         </div>
                         <div class="x_content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form action="">
+                                        <div class="col-md-10">
+                                            <input type="text" name="search_admin_users" class="form-control">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-primary">search</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
                             <div class="col-md-12">
                                 @include('backend.layouts.message')
                                 <table class="table table-hover">
@@ -76,13 +90,14 @@
                                             <img src="{{url('uploads/admins/'.$users->image)}}" width="30" alt="{{$users->name."'s Picture"}}">
                                         </td>
                                         <td>
-                                            <a href="{{route('edit-admin-user').'/'.$users->id}}" class="btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                                            <a href="{{route('edit-admin-user').'/'.$users->id}}" class="btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                             <a href="{{route('delete-admin-user').'/'.$users->id}}" class="btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
+                                {{$usersData->links()}}
                             </div>
                         </div>
                     </div>

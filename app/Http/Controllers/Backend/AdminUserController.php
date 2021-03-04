@@ -9,11 +9,21 @@ use Illuminate\Validation\Rule;
 
 class AdminUserController extends BackendController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $userData = AdminUser::orderBy('id', 'desc')->get();
-        $this->data('usersData', $userData);
-        return view($this->pagePath . 'admins.show-admin-users', $this->data);
+        if(!empty($request->search_admin_users)){
+            $search=$request->search_admin_users;
+            $userData=AdminUser::where('name','LIKE','%'.$search.'%')
+                ->orwhere('username','LIKE','%'.$search.'%')
+                ->orwhere('email','LIKE','%'.$search.'%')->paginate(5);
+                $this->data('usersData', $userData);
+                return view($this->pagePath . 'admins.show-admin-users', $this->data);
+            }else{
+            $userData = AdminUser::orderBy('id', 'desc')->paginate(5);
+            $this->data('usersData', $userData);
+            return view($this->pagePath . 'admins.show-admin-users', $this->data);
+        }
+
     }
 
     public function add(Request $request)
@@ -115,7 +125,7 @@ class AdminUserController extends BackendController
         $id=$request->criteria;
         $this->deleteFiles($id);
         if($this->deleteFiles($id)&& AdminUser::findOrFail($id)->delete()){
-            return redirect()->back()->with('success',"Data Deleted Successfully");
+            return redirect()->route("admin-users")->with('success',"Data Deleted Successfully");
         }
     }
 
@@ -146,7 +156,6 @@ class AdminUserController extends BackendController
                 $data['name'] = $request->name;
                 $data['username'] = $request->username;
                 $data['email'] = $request->email;
-                $data['password'] = bcrypt($request->password);
 
                 if ($request->hasFile('image')) {
                     $file = $request->file('image');

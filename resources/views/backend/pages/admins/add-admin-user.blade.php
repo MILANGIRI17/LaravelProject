@@ -58,7 +58,7 @@
                                     <br><input type="file" name="image" class="btn btn-default">
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-success">Update User</button>
+                                    <button class="btn btn-success">Add User</button>
                                 </div>
 
                             </form>

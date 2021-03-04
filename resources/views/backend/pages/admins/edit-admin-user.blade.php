@@ -57,7 +57,6 @@
                                     <img src="{{url('uploads/admins/'.$adminData->image)}}" class="img-fluid img-thumbnail" alt="{{$adminData->name." 's Picture"}}">
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
