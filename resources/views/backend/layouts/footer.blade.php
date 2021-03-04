@@ -25,6 +25,7 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{url('backend/build/js/custom.min.js')}}"></script>
+    <script src="{{url('backend/custom/custom.js')}}"></script>
 
     </body>
     </html>

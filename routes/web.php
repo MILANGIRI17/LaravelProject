@@ -15,5 +15,7 @@ Route::group(['namespace'=>'backend','prefix'=>'admin'],function(){
     Route::group(['prefix' => 'admin-user'],function(){
         Route::any('/','AdminUserController@index')->name('admin-users');
         Route::any('/add-admin-user','AdminUserController@add')->name('add-admin-user');
+        Route::any('update-admin-status','AdminUserController@updateStatus')->name('update-admin-status');
+        Route::any('update-admin-type','AdminUserController@updateAdminType')->name('update-admin-type');
     });
 });

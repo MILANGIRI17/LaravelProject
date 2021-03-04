@@ -8,7 +8,9 @@
                 <div class="col-md-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Show Users</h2>
+                            <h2>Show Users
+                            <a href="{{route('add-admin-user')}}" class="btn-sm btn-success"><i class="fa fa-plus"></i></a>
+                            </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
@@ -47,14 +49,35 @@
                                         <td>{{$users->name}}</td>
                                         <td>{{$users->username}}</td>
                                         <td>{{$users->email}}</td>
-                                        <td>{{$users->admin_type}}</td>
-                                        <td>{{$users->status}}</td>
+                                        <td>
+                                            <form action="{{route('update-admin-type')}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="criteria" value="{{$users->id}}">
+                                            @if($users->admin_type=='super-admin')
+                                                <button name="super-admin" class="btn-sm btn-success" title="Super-Admin"><i class="fa fa-users"></i></button>
+                                            @else
+                                                <button name="admin" class="btn-sm btn-info" title="Admin"><i class="fa fa-user"></i></button>
+                                            @endif
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="{{route('update-admin-status')}}" method="post">
+                                                @csrf
+                                                <input type="hidden" name="criteria" value="{{$users->id}}">
+                                            @if($users->status==1)
+                                                <button name="active" class="btn-sm btn-primary" title="Active"><i class="fa fa-check"></i></button>
+                                            @else
+                                                <button name="inactive" class="btn-sm btn-warning" title="Inactive"><i class="fa fa-times"></i></button>
+                                            @endif
+                                            </form>
+                                        </td>
+
                                         <td>
                                             <img src="{{url('uploads/admins/'.$users->image)}}" width="30" alt="{{$users->name."'s Picture"}}">
                                         </td>
                                         <td>
-                                            <a href="">Edit</a>
-                                            <a href="">Delete</a>
+                                            <a href="" class="btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                                            <a href="{{route('delete-admin-user').'/'.$users->id}}" class="btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach
