@@ -76,7 +76,7 @@
                                             <img src="{{url('uploads/admins/'.$users->image)}}" width="30" alt="{{$users->name."'s Picture"}}">
                                         </td>
                                         <td>
-                                            <a href="" class="btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                                            <a href="{{route('edit-admin-user').'/'.$users->id}}" class="btn-sm btn-success"><i class="fa fa-edit"></i></a>
                                             <a href="{{route('delete-admin-user').'/'.$users->id}}" class="btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
