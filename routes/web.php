@@ -11,4 +11,10 @@ Route::group(['namespace'=>'frontend'],function(){
 //Backend routes
 Route::group(['namespace'=>'backend','prefix'=>'admin'],function(){
     Route::any('/','DashboardController@index')->name('admin');
+
+    Route::group(['prefix' => 'admin-user'],function(){
+        Route::any('/','AdminUserController@index')->name('admin-users');
+        Route::any('/add-admin-user','AdminUserController@add')->name('add-admin-user');
+
+    });
 });

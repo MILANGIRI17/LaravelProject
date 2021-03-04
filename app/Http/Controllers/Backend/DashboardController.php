@@ -10,4 +10,5 @@ class DashboardController extends BackendController
     public function index(){
         return view($this->pagePath.'dashboard.dashboard',$this->data);
     }
+
 }
