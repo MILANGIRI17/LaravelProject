@@ -100,3 +100,23 @@ class AdminUserController extends BackendController
         }
     }
 
+    //to delete image alongside data on database;
+    public function deleteFiles($id){
+        $findData=AdminUser::findOrFail($id);
+        $imageName=$findData->image;
+        $filePath=public_path('uploads/admins/'.$imageName);
+        if(file_exists($filePath)&& is_file($filePath)){
+            unlink($filePath);
+        }
+        return true;
+    }
+    public function delete(Request $request){
+        $id=$request->criteria;
+        $this->deleteFiles($id);
+        if($this->deleteFiles($id)&& AdminUser::findOrFail($id)->delete()){
+            return redirect()->back()->with('success',"Data Deleted Successfully");
+        }
+    }
+}
+
+
