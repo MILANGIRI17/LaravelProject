@@ -7,6 +7,10 @@ Route::group(['namespace'=>'frontend'],function(){
    Route::any('contact','ApplicationController@contact')->name('contact');
 });
 
+Route::group(['namespace'=>'backend'],function(){
+    Route::any('admin-login',"AdminUserController@login")->name('admin-login');
+});
+
 
 //Backend routes
 Route::group(['namespace'=>'backend','prefix'=>'admin'],function(){
