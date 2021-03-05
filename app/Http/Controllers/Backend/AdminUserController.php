@@ -17,7 +17,12 @@ class AdminUserController extends BackendController
                 ->orwhere('username', 'LIKE', '%' . $search . '%')
                 ->orwhere('email', 'LIKE', '%' . $search . '%')->paginate(5);
             $this->data('usersData', $userData);
-            return view($this->pagePath . 'admins.show-admin-users', $this->data);
+            if(empty($userData->first())){
+                return redirect()->route('admin-users')->with('error','Data not found');
+            }else{
+                return view($this->pagePath . 'admins.show-admin-users', $this->data);
+            }
+
         } else {
             $userData = AdminUser::orderBy('id', 'desc')->paginate(5);
             $this->data('usersData', $userData);
