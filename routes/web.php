@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['namespace'=>'frontend'],function(){
    Route::any('/','ApplicationController@index')->name('index');
    Route::any('contact','ApplicationController@contact')->name('contact');
+
+   Route::any('login','ApplicationController@login')->name('login');
 });
 
 Route::group(['namespace'=>'backend'],function(){
