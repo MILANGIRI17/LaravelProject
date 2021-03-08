@@ -13,6 +13,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Login to Dashboard</h1>
+            @include('backend.layouts.message')
             <form action="{{route('admin-login')}}" method="post">
                 @csrf
                 <div class="form-group">
@@ -21,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password: </label>
-                    <input type="text" id="password" name="password" class="form-control form-control-sm">
+                    <input type="password" id="password" name="password" class="form-control form-control-sm">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-success">Login</button>
