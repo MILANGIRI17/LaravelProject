@@ -25,4 +25,6 @@ Route::group(['namespace'=>'backend','prefix'=>'admin'],function(){
         Route::any('edit-admin-user/{criteria?}','AdminUserController@edit')->name('edit-admin-user');
         Route::any('edit-admin-user-action','AdminUserController@editAction')->name('edit-admin-user-action');
     });
+
+    Route::any('admin-logout','AdminUserController@logout')->name('admin-logout');
 });

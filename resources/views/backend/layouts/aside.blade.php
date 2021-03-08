@@ -12,7 +12,7 @@
             <div class="profile_pic">
                 <img src="{{'uploads/admins/'.Auth::guard('admin')->user()->image}}" alt="..." class="img-circle profile_img">
             </div>
-            <div class="profile   le_info">
+            <div class="profile_info">
                 <span>Welcome,</span>
                 <h2>{{Auth::guard('admin')->user()->username}}</h2>
             </div>
