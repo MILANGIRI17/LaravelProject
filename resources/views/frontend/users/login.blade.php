@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User Login</title>
+    <title>LaravelProject:Login</title>
     <link href="{{url('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
     <style>
         body {
@@ -73,67 +73,67 @@
             text-decoration: underline
         }
 
-        ul.social-network {
-            list-style: none;
-            display: inline;
-            margin-left: 0 !important;
-            padding: 0
-        }
-        ul.social-network li {
-            display: inline;
-            margin: 0 5px
-        }
+        /*ul.social-network {*/
+        /*    list-style: none;*/
+        /*    display: inline;*/
+        /*    margin-left: 0 !important;*/
+        /*    padding: 0*/
+        /*}*/
+        /*ul.social-network li {*/
+        /*    display: inline;*/
+        /*    margin: 0 5px*/
+        /*}*/
 
-        .social-network a.icoFacebook:hover {
-            background-color: #3B5998
-        }
+        /*.social-network a.icoFacebook:hover {*/
+        /*    background-color: #3B5998*/
+        /*}*/
 
-        .social-network a.icoTwitter:hover {
-            background-color: #33ccff
-        }
-        .social-network a.icoGoogle:hover {
-            background-color: #BD3518
-        }
+        /*.social-network a.icoTwitter:hover {*/
+        /*    background-color: #33ccff*/
+        /*}*/
+        /*.social-network a.icoGoogle:hover {*/
+        /*    background-color: #BD3518*/
+        /*}*/
 
-        .social-network a.icoFacebook:hover i,
-        .social-network a.icoTwitter:hover i,
-        .social-network a.icoGoogle:hover i {
-            color: #fff
-        }
+        /*.social-network a.icoFacebook:hover i,*/
+        /*.social-network a.icoTwitter:hover i,*/
+        /*.social-network a.icoGoogle:hover i {*/
+        /*    color: #fff*/
+        /*}*/
 
-        a.socialIcon:hover,
-        .socialHoverClass {
-            color: #44BCDD
-        }
+        /*a.socialIcon:hover,*/
+        /*.socialHoverClass {*/
+        /*    color: #44BCDD*/
+        /*}*/
 
-        .social-circle li a {
-            display: inline-block;
-            position: relative;
-            margin: 0 auto 0 auto;
-            border-radius: 50%;
-            text-align: center;
-            width: 50px;
-            height: 50px;
-            font-size: 20px
-        }
+        /*.social-circle li a {*/
+        /*    display: inline-block;*/
+        /*    position: relative;*/
+        /*    margin: 0 auto 0 auto;*/
+        /*    border-radius: 50%;*/
+        /*    text-align: center;*/
+        /*    width: 50px;*/
+        /*    height: 50px;*/
+        /*    font-size: 20px*/
+        /*}*/
 
-        .social-circle li i {
-            margin: 0;
-            line-height: 50px;
-            text-align: center
-        }
+        /*.social-circle li i {*/
+        /*    margin: 0;*/
+        /*    line-height: 50px;*/
+        /*    text-align: center*/
+        /*}*/
 
-        .social-circle li a:hover i,
-        .triggeredHover {
-            transform: rotate(360deg);
-            transition: all 0.2s
-        }
+        /*.social-circle li a:hover i,*/
+        /*.triggeredHover {*/
+        /*    transform: rotate(360deg);*/
+        /*    transition: all 0.2s*/
+        /*}*/
 
-        .social-circle i {
-            color: #fff;
-            transition: all 0.8s;
-            transition: all 0.8s
-        }
+        /*.social-circle i {*/
+        /*    color: #fff;*/
+        /*    transition: all 0.8s;*/
+        /*    transition: all 0.8s*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -141,16 +141,17 @@
     <div class="row">
         <div class="col-md-6">
             <div class="card">
-                <form class="box">
-                    <h1>Login</h1>
-                    <p class="text-muted"> Please enter your login and password!</p> <input type="text" name="" placeholder="Username"> <input type="password" name="" placeholder="Password"> <a class="forgot text-muted" href="#">Forgot password?</a> <input type="submit" name="" value="Login" href="#">
-                    <div class="col-md-12">
-                        <ul class="social-network social-circle">
-                            <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#" class="icoTwitter" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
-                        </ul>
-                    </div>
+                <form action="" method="post" class="box">
+                    @csrf
+                    <h1>User Login</h1>
+                    <p class="text-muted"> Please enter your login and password!</p>
+                    <a style="color: red">{{$errors->first('username')}}</a>
+                    <input type="text" name="username" id="username" placeholder="Username">
+                    <a style="color: red">{{$errors->first('password')}}</a>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    <a class="forgot text-muted" href="#">Forgot password?</a>
+                    <p>@include('backend.layouts.message')</p>
+                    <input type="submit" name="login" value="Login">
                 </form>
             </div>
         </div>
