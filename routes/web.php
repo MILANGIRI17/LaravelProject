@@ -13,7 +13,7 @@ Route::group(['namespace'=>'backend'],function(){
 
 
 //Backend routes
-Route::group(['namespace'=>'backend','prefix'=>'admin'],function(){
+Route::group(['namespace'=>'backend','prefix'=>'admin','middleware'=>'auth:admin'],function(){
     Route::any('/','DashboardController@index')->name('admin');
 
     Route::group(['prefix' => 'admin-user'],function(){
