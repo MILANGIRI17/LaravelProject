@@ -192,6 +192,10 @@ class AdminUserController extends BackendController
             return  view($this->backendPath.'admin-login.index',$this->data);
         }
         if($request->isMethod('post')){
+            $this->validate($request,[
+                'username'=>'required',
+                'password'=>'required'
+            ]);
             $username=$request->username;
             $password=$request->password;
             if(Auth::guard('admin')->attempt(['username'=>$username,'password'=>$password])){

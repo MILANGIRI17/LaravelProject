@@ -7,6 +7,11 @@ Route::group(['namespace'=>'frontend'],function(){
    Route::any('contact','ApplicationController@contact')->name('contact');
 
    Route::any('login','ApplicationController@login')->name('login');
+
+   Route::group(['prefix'=>'users','middleware'=>'auth:web'],function(){
+      Route::any('/','ApplicationController@user')->name('users');
+      Route::any('/logout','ApplicationController@logout')->name('logout');
+   });
 });
 
 Route::group(['namespace'=>'backend'],function(){

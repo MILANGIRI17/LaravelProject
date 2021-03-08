@@ -157,5 +157,6 @@
         </div>
     </div>
 </div>
+<script src="{{url('backend/custom/custom.js')}}"></script>
 </body>
 </html>
