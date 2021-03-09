@@ -73,33 +73,35 @@
                         <h2>Category</h2>
                         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                            @foreach($categoryData as $category)
+                               @if(count($category->subCategoryData)>0)
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+                                        <a data-toggle="collapse" data-parent="#accordian" href="#{{$category->slug}}">
                                             <span class="badge pull-right"><i class="fa fa-plus"></i></span>
                                             {{$category->cat_name}}
                                         </a>
                                     </h4>
                                 </div>
-                                <div id="sportswear" class="panel-collapse collapse">
+                                <div id="{{$category->slug}}" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul>
-                                            <li><a href="#">Nike </a></li>
-                                            <li><a href="#">Under Armour </a></li>
-                                            <li><a href="#">Adidas </a></li>
-                                            <li><a href="#">Puma</a></li>
-                                            <li><a href="#">ASICS </a></li>
+                                            @foreach($category->subCategoryData as $subCat)
+                                            <li><a href="#">{{$subCat->sub_cat_name}}</a></li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
                             </div>
+                                @else
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"><a href="#">{{$category->cat_name}}</a></h4>
+                                        </div>
+                                    </div>
+                                @endif
                             @endforeach
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title"><a href="#">Shoes</a></h4>
-                                </div>
-                            </div>
+
                         </div><!--/category-products-->
 
                         <div class="brands_products"><!--brands_products-->
