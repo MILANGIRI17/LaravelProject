@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,6 +11,7 @@ class ApplicationController extends FrontendController
 {
 
     public function index(){
+        $this->data('categoryData',Category::all());
         $this->data('title',$this->makeTitle('Home'));
         return view($this->pagePath.'home.home',$this->data);
     }

@@ -33,5 +33,14 @@ Route::group(['namespace'=>'backend','prefix'=>'admin','middleware'=>'auth:admin
         Route::any('edit-admin-user-action','AdminUserController@editAction')->name('edit-admin-user-action');
     });
 
+    Route::group(['prefix' => 'category'],function(){
+        Route::any('/','CategoryController@index')->name('category');
+        Route::any('/add-category','CategoryController@add')->name('add-category');
+        Route::any('update-category-status','CategoryController@updateStatus')->name('update-category-status');
+        Route::any('delete-category/{criteria?}','CategoryController@delete')->name('delete-category');
+        Route::any('edit-category/{criteria?}','CategoryController@edit')->name('edit-category');
+        Route::any('edit-category-action','CategoryController@editAction')->name('edit-category-action');
+    });
+
     Route::any('admin-logout','AdminUserController@logout')->name('admin-logout');
 });
