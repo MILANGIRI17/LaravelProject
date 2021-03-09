@@ -20,7 +20,10 @@
     <link href="{{url('backend/vendors/google-code-prettify/bin/prettify.min.css')}}" rel="stylesheet">
 
     <!-- Custom styling plus plugins -->
+    <link href="{{url('backend/ckeditor/contents.css')}}" rel="stylesheet">
+    <link href="{{url('backend/tag-input/bootstrap-tagsinput.css')}}" rel="stylesheet">
     <link href="{{url('backend/build/css/custom.min.css')}}" rel="stylesheet">
+    <link href="{{url('backend/custom/custom.css')}}" rel="stylesheet">
 </head>
 
 <body class="nav-md">

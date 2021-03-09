@@ -20,10 +20,12 @@
     <script src="{{url('backend/vendors/nprogress/nprogress.js')}}"></script>
     <!-- bootstrap-wysiwyg -->
     <script src="{{url('backend/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js')}}"></script>
-    <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script>
+    <script src="{{url('backend/vendors/jquery.hotkeys/jquery.hotkeys.js')}}"></script>
     <script src="{{url('backend/vendors/google-code-prettify/src/prettify.js')}}"></script>
 
     <!-- Custom Theme Scripts -->
+    <script src="{{url('backend/tag-input/bootstrap-tagsinput.js')}}"></script>
+    <script src="{{url('backend/ckeditor/ckeditor.js')}}"></script>
     <script src="{{url('backend/build/js/custom.min.js')}}"></script>
     <script src="{{url('backend/custom/custom.js')}}"></script>
 
