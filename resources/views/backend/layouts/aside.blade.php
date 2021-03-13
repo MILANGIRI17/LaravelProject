@@ -43,6 +43,13 @@
                             <li><a href="{{route('category')}}">Show Category</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a><i class="fa fa-folder-open-o"></i>Sub Category<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{route('add-sub-category')}}">Add Sub Category</a></li>
+                            <li><a href="{{route('sub-category')}}">Show Sub Category</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 

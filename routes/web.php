@@ -23,6 +23,7 @@ Route::group(['namespace'=>'backend'],function(){
 Route::group(['namespace'=>'backend','prefix'=>'admin','middleware'=>'auth:admin'],function(){
     Route::any('/','DashboardController@index')->name('admin');
 
+    //admin user
     Route::group(['prefix' => 'admin-user'],function(){
         Route::any('/','AdminUserController@index')->name('admin-users');
         Route::any('/add-admin-user','AdminUserController@add')->name('add-admin-user');
@@ -33,6 +34,7 @@ Route::group(['namespace'=>'backend','prefix'=>'admin','middleware'=>'auth:admin
         Route::any('edit-admin-user-action','AdminUserController@editAction')->name('edit-admin-user-action');
     });
 
+    //category
     Route::group(['prefix' => 'category'],function(){
         Route::any('/','CategoryController@index')->name('category');
         Route::any('/add-category','CategoryController@add')->name('add-category');
@@ -40,6 +42,16 @@ Route::group(['namespace'=>'backend','prefix'=>'admin','middleware'=>'auth:admin
         Route::any('delete-category/{criteria?}','CategoryController@delete')->name('delete-category');
         Route::any('edit-category/{criteria?}','CategoryController@edit')->name('edit-category');
         Route::any('edit-category-action','CategoryController@editAction')->name('edit-category-action');
+    });
+
+    //subcategory
+    Route::group(['prefix' => 'sub-category'],function(){
+        Route::any('/','SubCategoryController@index')->name('sub-category');
+        Route::any('/add-sub-category','SubCategoryController@add')->name('add-sub-category');
+        Route::any('update-sub-category-status','SubCategoryController@updateStatus')->name('update-sub-category-status');
+        Route::any('delete-sub-category/{criteria?}','SubCategoryController@delete')->name('delete-sub-category');
+        Route::any('edit-sub-category/{criteria?}','SubCategoryController@edit')->name('edit-sub-category');
+        Route::any('edit-sub-category-action','SubCategoryController@editAction')->name('edit-sub-category-action');
     });
 
     Route::any('admin-logout','AdminUserController@logout')->name('admin-logout');

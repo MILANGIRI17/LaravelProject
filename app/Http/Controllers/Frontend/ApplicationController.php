@@ -34,7 +34,7 @@ class ApplicationController extends FrontendController
             $password=$request->password;
             echo $username.' '.$password;
             if(Auth::guard('web')->attempt(['username'=>$username,'password'=>$password])){
-              return redirect()->intended('users');
+              return redirect()->intended(route('index'));
             }else{
                 return redirect()->back()->with('error',"Username and password do not match");
             }
