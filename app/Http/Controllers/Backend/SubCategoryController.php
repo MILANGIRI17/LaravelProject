@@ -20,7 +20,7 @@ class SubCategoryController extends BackendController
             $subCategoryData = SubCategory::where('sub_cat_name','LIKE','%'. $search .'%')->paginate(5);
             $this->data('subCategoryData', $subCategoryData);
             if(empty($subCategoryData->first())){
-                return redirect()->route('category')->with('error','Data not found');
+                return redirect()->route('sub-category')->with('error','Data not found');
             }else{
                 return view($this->pagePath . 'sub-category.show-sub-category', $this->data);
             }
@@ -102,6 +102,7 @@ class SubCategoryController extends BackendController
     {
         $id = $request->criteria;
         $subCategoryData = SubCategory::findOrFail($id);
+        $this->data('categoryData',Category::all());
         $this->data('subCategoryData', $subCategoryData);
         return view($this->pagePath . 'sub-category.edit-sub-category', $this->data);
     }

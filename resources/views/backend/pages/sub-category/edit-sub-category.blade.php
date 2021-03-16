@@ -30,7 +30,14 @@
                                 <form action="{{route('edit-sub-category-action')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="criteria" value="{{$subCategoryData->id}}">
-                                    <input type="hidden" name="cat_id" value="{{$subCategoryData->cat_id}}">
+                                   <div class="form-group">
+                                    <select name="cat_id" id="cat_id" class="form-control">
+                                        <option value="{{$subCategoryData->cat_id}}">{{$subCategoryData->CategoryData->cat_name}}</option>
+                                        @foreach($categoryData as $category)
+                                            <option value="{{$category->id}}">{{$category->cat_name}}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
                                     <div class="form-group">
                                         <label for="title">Sub Category Name: <a href="" style="color:red;">{{$errors->first('sub_cat_name')}}</a></label>
                                         <input type="text" name="sub_cat_name" class="form-control form-control-sm" id="title" value="{{$subCategoryData->sub_cat_name}}">
