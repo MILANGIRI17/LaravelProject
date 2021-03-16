@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category\Category;
+use App\Models\SubCategory\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use phpDocumentor\Reflection\DocBlock\Tags\TagWithType;
 
 class CategoryController extends BackendController
 {
@@ -86,8 +88,13 @@ class CategoryController extends BackendController
     public function delete(Request $request)
     {
         $id = $request->criteria;
-        if (Category::findOrFail($id)->delete()) {
-            return redirect()->route("category")->with('success', "Data Deleted Successfully");
+        $totalSubCat=SubCategory::where('cat_id','=',$id)->count();
+        if($totalSubCat>0){
+            return redirect()->back()->with('error','Cannot Delete Category Containing Sub-Category');
+        }else{
+            if (Category::findOrFail($id)->delete()) {
+                return redirect()->route("category")->with('success', "Data Deleted Successfully");
+            }
         }
     }
 

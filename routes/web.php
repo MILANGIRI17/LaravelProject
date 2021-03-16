@@ -54,5 +54,15 @@ Route::group(['namespace'=>'backend','prefix'=>'admin','middleware'=>'auth:admin
         Route::any('edit-sub-category-action','SubCategoryController@editAction')->name('edit-sub-category-action');
     });
 
+    //Product
+    Route::group(['prefix' => 'product'],function(){
+        Route::any('/','ProductController@index')->name('product');
+        Route::any('/add-product','ProductController@add')->name('add-product');
+        Route::any('update-product-status','ProductController@updateStatus')->name('update-product-status');
+        Route::any('delete-product/{criteria?}','ProductController@delete')->name('delete-product');
+        Route::any('edit-product/{criteria?}','ProductController@edit')->name('edit-product');
+        Route::any('edit-product-action','ProductController@editAction')->name('edit-product-action');
+    });
+
     Route::any('admin-logout','AdminUserController@logout')->name('admin-logout');
 });
